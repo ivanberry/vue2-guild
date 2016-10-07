@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script type="text/javascript" src="//unpkg.com/vue@2.0.1/dist/vue.js"></script>
+        <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+        <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+        <title>Vuejs learning</title>
+        <style>
+            .active {
+                color: green;
+            }
+            .text-danger {
+                color: red;
+            }
+            .static {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Learning Word by word</h1>
+        <div id="app">
+            {{ message }}
+        </div>
+
+        <div id="app-2">
+            <span v-bind:id="id">inspect me</span>
+        </div>
+
+        <div id="app-3">
+            <p v-if="seen">New you see me</p>
+        </div>
+
+        <div id="app-4">
+            <ol>
+                <todo v-for="todo in todos" v-bind:todo="todo"></todo>
+            </ol>
+        </div>
+
+        <div id="app-5">
+            <p>{{ message }}</p>
+            <button v-on:click="reverseMessage">Reveser Message</button>
+        </div>
+
+        <div id="app-6">
+            <p>{{ message }}</p>
+            <input type="text" v-model="message">
+        </div>
+
+        <div id="app-7">
+            <a :href="url ? 'https://www.google.com' : 'https://www.baidu.com'">谷歌</a>
+        </div>
+
+        <div id="app-8">
+            <p>Original message: "{{ message }}"</p>
+            <p>Computed reverse message: "{{ reverseMessage }}"</p>
+            <p>Date now will not change: {{ nowComputed }}</p>
+            <p>Date now will change always: {{ nowMethod }}</p>
+        </div>
+
+        <div id="app-9">{{ fullName }}</div>
+        <div id="app-10">{{ fullName }}</div>
+        <div id="app-11">{{ fullName }}</div>
+
+        <div id="watch">
+            <p>
+                Ask a yes/no question:
+                <input type="text" v-model="question">
+            </p>
+            <p>
+                {{ answer }}
+                <img :src="imageUrl" alt="YesNo" width="120">
+            </p>
+        </div>
+
+        <div id="app-12" class="static" v-bind:class="[isActive ? active : '', errorClass]">
+            <p>样式类名的绑定</p>
+        </div>
+
+        <div id="app-13" :style="styleObject">
+            <p>行内样式绑定</p>
+        </div>
+
+        <div id="app-14" v-if="ok">
+            <h1>我是谢尔婷</h1>
+        </div>
+
+        <div v-if="Math.random() > 0.9">
+            Now you see me
+        </div>
+        <div v-else>
+            Now you dont
+        </div>
+
+        <div id="v-for">
+            <ul>
+                <li v-for="(item, index) in items">
+                    {{ parentMessage }} - {{ index }} - {{ item.message }}
+                </li>
+            </ul>
+        </div>
+
+        <ul id="v-for-object">
+            <li v-for="(value, key, index) in object">
+                The {{ index }} {{ key }} is {{ value }}
+            </li>
+        </ul>
+
+        <div id="v-for-Range">
+            <span v-for="n in 10">{{ n }}</span>
+        </div>
+
+        <div id="listenE">
+            <button v-on:click="counter++">Add 1</button>
+            <p>The button above has been clicked {{ counter }} times</p>
+        </div>
+
+        <div id="methodE">
+            <button @click="greet">GREET</button>
+        </div>
+
+        <!-- <div id="methodWithE">
+            <button v-on:click="warn('Form can't be done', $event)">button</button>
+        </div>
+ -->
+
+        <div id="multiple">
+
+            <span>Multiple message is:</span>
+            <p>{{ message }}</p>
+            <textarea name="name" rows="8" cols="40" v-model="message" value="add multiple inline messages"></textarea>
+        </div>
+
+        <div id="checkedbox">
+            <input type="checkbox" id="checkbox" v-model="checked">
+            <label for="checkbox">{{ checked }}</label>
+        </div>
+
+        <div id="checkedNames">
+            <input type="checkbox" id="jack" value="jack" v-model="checkNames">
+            <label for="jack">Jack</label>
+            <input type="checkbox" id="john" value="john" v-model="checkNames">
+            <label for="john">John</label>
+            <input type="checkbox" id="mike" value="mike" v-model="checkNames">
+            <label for="Mike">Mike</label>
+            <br>
+            <span>Checked names: {{ checkNames }}</span>
+        </div>
+
+        <div id="radioCheck">
+            <input type="radio" id="one" value="One" v-model="picked">
+            <label for="one">One</label>
+            <input type="radio" id="two" value="Two" v-model="picked">
+            <label for="two">Two</label>
+            <br>
+            <span>Picked: {{ picked }}</span>
+        </div>
+
+        <div id="selectValue">
+            <select name="" id="" v-model="selected">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <br>
+            <span>Selected: {{ selected }}</span>
+        </div>
+
+
+        <div id="selectMValue">
+            <select name="" id="" v-model="selected" multiple>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <br>
+            <span>Selected: {{ selected }}</span>
+        </div>
+
+        <div id="selectWithLoop">
+            <select class="" name="" v-model="selected">
+                <option v-for="option in options" :value="option.value">
+                    {{ option.value }}
+                </option>
+            </select>
+            <br>
+            <span>{{ selected }}</span>
+        </div>
+
+        <!-- bind input values with Dynamic value -->
+        <div id="dynamicBind">
+            <!-- checkbox -->
+            <!-- <input type="checkbox" v-mode="toggle" :true-value="a" :false-value="b"> -->
+
+            <!-- radio -->
+            <!-- <input type="radio" v-model="pick" :value="a"> -->
+
+            <!-- select -->
+            <select name="lol" id="" v-model="selected">
+                <option :value="{ number: 123 }">123</option>
+            </select>
+            <br>
+            <span>{{ toggle }}</span>
+            <br>
+            <span>{{ pick }}</span>
+            <br>
+            <span>{{ selected }}</span>
+        </div>
+
+        <div id="component-data-function">
+            <my-component></my-component>
+        </div>
+
+        <div id="App-0">
+            <simple-counter></simple-counter>
+            <simple-counter></simple-counter>
+            <simple-counter></simple-counter>
+        </div>
+
+        <div id="App-1">
+            <child message="hello!"></child>
+        </div>
+
+        <div id="App-2">
+            <input type="text" v-model="parentMsg">
+            <br>
+            <anochild :my-message="parentMsg"></anochild>
+        </div>
+
+        <div id="App-3">
+            <p>{{ total }}</p>
+            <button-counter v-on:increment="incrementTotal"></button-counter>
+            <button-counter v-on:increment="incrementTotal"></button-counter>
+        </div>
+
+        <div id="App-4">
+            <p>{{ message }}</p>
+            <my-input
+                label="Message"
+                v-model="message"
+            ></my-input>
+        </div>
+
+        <script src='index.js'></script>
+        <script src='component.js'></script>
+    </body>
+
+</html>

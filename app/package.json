@@ -1,0 +1,22 @@
+{
+  "name": "vue2",
+  "version": "1.0.0",
+  "description": "vue文档学习笔记",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Vue2"
+  ],
+  "author": "ivanberry",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.14.0",
+    "lodash": "^4.16.2",
+    "vue": "^2.0.1"
+  }
+}
