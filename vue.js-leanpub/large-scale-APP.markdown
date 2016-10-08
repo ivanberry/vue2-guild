@@ -46,3 +46,7 @@ Single File Components or Vue Components allow us to specify a template, a scrip
 In addtion, we need vue-loader to transform Vue components into plain JavaScript modules. *vue-loader* is a loader for Webpack that also provides a very nice set features, such as ES6 enabled by default, scoped CSS for each component, and more.
 
 ## The *vue-cli*
+
+## Create a new vue file 
+
+Once we create the **Login.vue**, In order to view the file in the browser we have to include our Login component somewhere.So, we'll import it into the main 'App.vue' file and append it to its components object.

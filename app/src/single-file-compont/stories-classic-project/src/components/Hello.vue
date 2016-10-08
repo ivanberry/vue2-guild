@@ -6,12 +6,12 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      msg: 'Hello Vue!',
-    };
-  },
-};
+      msg: 'Hello Vue!'
+    }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
