@@ -340,7 +340,7 @@ var dynamicBind = new Vue({
 //register
 Vue.component('story', {
   template: '#story-template',
-  props: ['story', 'favorite'],
+  props: ['story'],
   methods: {
     upvote: function () {
       this.story.upvotes += 1;

@@ -118,6 +118,68 @@ We have implemented, with the use of methods,the voting system.I think it looks 
 
 If you try to run the above code, you will find that it does not work as it should be. Whenever you try to favorite a story,the variable inside `$data` remains null and we get none response.
 
-It seems that our story component is unable to update favorite object, so we are going to pass it on each story and add favorite to component's properies.
+It seems that our story component is unable to update favorite object, so we are going to pass it on each story and add favorite to component's properties.
 
- 
+# Q:
+
+1. Why deprecated `sync` modifier? And now how to achieve the **two-way-binding**? and how to use `emit` event to pass data from child to parent?
+
+
+# Class and Style Bindlings
+
+## Class binding
+
+### Object Syntax
+
+A common need for data binding is manipulating an element's class and its styles.For such cases, you can use `v-bind:class`.This can be used to apply classes conditionally,toggle them and/or apply many of them using one binded object et al.
+
+The `v-bind:class` directive takes an object with the following format as an argument:
+
+```js
+{
+  'classA': true,
+  'classB': false,
+  'classC': true
+}
+```
+and applies all class with true value to the element.For example, the classes of the following element will be **classA** and **classC**.
+
+```HTML
+<div :class="elClasses"></div>
+```
+```js
+data: {
+  elClasses: {
+    classA: true,
+    classB: false,
+    classC: true
+  }
+}
+```
+To demonstrate how `v-bind` is used with class attributes, we are going to make an example of class toggling.Using `v-bind:class` directive,we are going to dynamically toggle the class of body element(example in **leanpub-class-bind.html**)
+
+We have applied a class to the body(in vue 2.0 mounted vue instance on body or html will be a anti-pattern).What this code actually does, is "flipping" the background color with a hit of the button.Pressing it invokes the `flipColor` function that reverses the value of "color" originally set to true.Then the `v-bind:class` is going to toggle the class name to "body-red" or "body-blue" conditionally depending on the truthfulness of "color" value. That given,the style is going to apply on each class and give us the desired result, according to which class is active.
+
+**INFO**: The `v-bind:class` directive can co-exist with plain class attribute. So in our example, body always has the `text-center` and conditionally one of `body-red` or `body-blue`.
+
+### Array Syntax
+
+We can apply also apply a list of classes to an element,using an array of classnames.
+
+```HTML
+<div :class="['classA', 'classB', 'classC']"></div>
+```
+Applying conditionally a class, can also be achieved with the use of inline if inside the array.
+
+```HTML
+<div :class="['classA', condition ? 'classB' : 'classC']"></div>
+```
+## Style Binding
+
+Using `:style` we can apply inline style on elements, it also has **Obejct Syntax** and **Array Syntax**.
+
+**INFO**: personal, the cool modifier is **prefix**.
+
+## Binds in Action
+
+The above example has an array of objects called "tasks" and styleObject which contains only one property.With the use of `v-for` a list of tasks is rendered and each task has a "done" property with a boolean value, Depending on the value of "done", a class is applied as conditionally as before.If a task has been completed, then css style applies and the task has a text-decoration of line-through.Each task is accompanied by a button listening for the "click" event which triggers a method, altering the completion status of the task. The *style* attribute is binded to *styleObject* resulting in the change of 'color'.
