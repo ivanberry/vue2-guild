@@ -336,3 +336,50 @@ var dynamicBind = new Vue({
         selected: '',
     }
 });
+
+//register
+Vue.component('story', {
+  template: '#story-template',
+  props: ['story', 'favorite'],
+  methods: {
+    upvote: function () {
+      this.story.upvotes += 1;
+      this.story.voted = true;
+    },
+    setFavorite: function () {
+      this.favorite = this.story;
+    }
+  },
+  computed: {
+    isFavorite: function () {
+      return this.story === this.favorite;
+    }
+  }
+});
+
+var leanpubApp = new Vue({
+  el: '#leanpub-app',
+  data: {
+    stories: [
+      {
+        plot: 'My horse is amazing!',
+        writer: 'Mr.tab',
+        upvotes: 12,
+        voted: false
+      },
+      {
+        plot: 'His borse is cute!',
+        writer: 'Miss.Li',
+        upvotes: 10,
+        voted: false
+      },
+      {
+        plot: 'Wooh, Vue.js is Cool!',
+        writer: 'Mr.Evan You',
+        upvotes: 4,
+        voted: false
+      }
+    ],
+    favorite: {}
+  }
+});

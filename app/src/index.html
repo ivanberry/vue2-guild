@@ -5,9 +5,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <script type="text/javascript" src="//unpkg.com/vue@2.0.1/dist/vue.js"></script>
-        <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
-        <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+        <link href="//cdn.bootcss.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet">
+        <script src="//cdn.bootcss.com/vue/2.0.1/vue.js"></script>
+        <script src="//cdn.bootcss.com/lodash.js/4.16.2/lodash.min.js"></script>
+        <script src="//cdn.bootcss.com/axios/0.14.0/axios.min.js"></script>
         <title>Vuejs learning</title>
         <style>
             .active {
@@ -245,6 +246,28 @@
                 v-model="message"
             ></my-input>
         </div>
+
+
+        <div id="leanpub-app">
+          <div class="container">
+            <h1>Let's hear some stories!</h1>
+            <ul class="list-group">
+              <story v-for="story in stories" :story="story" :favorite.sync="favorite"></story>
+            </ul>
+            <pre>{{ $data }}</pre>
+          </div>
+        </div>
+
+        <template id="story-template">
+          <li class="list-group-item">
+            {{ story.writer }} said {{ story.plot }}.
+            Story upvotes {{ story.upvotes }}.
+            <button v-show="!story.voted" @click="upvote" class="btn btn-default">Upvote</button>
+            <button v-show="!story.isFavorite" @click="setFavorite" class="btn btn-primary">Favorite</button>
+            <span v-show="isFavorite" class="glyphicon glyphicon-star pull-right" aria-hidden="false"></span>
+          </li>
+        </template>
+
 
         <script src='index.js'></script>
         <script src='component.js'></script>
