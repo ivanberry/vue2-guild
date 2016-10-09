@@ -47,6 +47,41 @@ In addtion, we need vue-loader to transform Vue components into plain JavaScript
 
 ## The *vue-cli*
 
-## Create a new vue file 
+## Create a new vue file
 
 Once we create the **Login.vue**, In order to view the file in the browser we have to include our Login component somewhere.So, we'll import it into the main 'App.vue' file and append it to its components object.
+
+
+## Nested Components
+
+We could like to be able to display the most "famous" stories, at any place we want to. So after the creation of a "Famous" component, we should be able to use it anywhere.
+
+We have filter the `story` array using computed properties, and create a template to display them. But where could we use this component? An idea is a have it within the Registration page, so the user could read the  most trending stories and become intrigued. This means - in the current project-that we need to have the Famous component within the Register one.Well, this can be done the same way we did it inside App.vue.
+
+## Eliminating Duplicate State
+
+In the previous examples we have hardcoded the data within each Component. This is not a proper way to work with data.
+
+When more than one Component uses the same data, it's a good practice to create/fetch the array once, and then find a way to share it between application's components.
+
+Stories.vue and Famous.vue are using the same data stories array. We will review two ways of creating the array once, and then sharing it between the components.
+
+1. Using components properties.
+2. Using a global store.
+
+### Sharing with Properties
+
+The first thing we are going to do is to move the stories array to App component.
+The next step is remove the `data ()` from Stories and Famous components, and declare stories property.
+
+```JS
+export default {
+  props: ['stories']
+}
+```
+We have to update the way we reference our component within App.vue.Here we **bind stories prop** to **stories** array.
+
+```HTML
+<stories :stories="stories"></stories>
+```
+Success, we got our stories again, fetched from the parent component! We can't do the same for "famous" component because it is not referenced inside App.vue. We will have to pass our array to Register component in order to pass it to Famous.
