@@ -27,6 +27,7 @@ export name = 'Alex';
 4. Classes
 5. Default Parameter Values
 
+
 With ES6 you can define default Parameter values.
 
 ## Advanced Workflow
