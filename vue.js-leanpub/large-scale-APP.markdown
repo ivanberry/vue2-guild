@@ -84,4 +84,10 @@ We have to update the way we reference our component within App.vue.Here we **bi
 ```HTML
 <stories :stories="stories"></stories>
 ```
-Success, we got our stories again, fetched from the parent component! We can't do the same for "famous" component because it is not referenced inside App.vue. We will have to pass our array to Register component in order to pass it to Famous.
+Success, we got our stories again, fetched from the parent component! We can't do the same for "famous" component because it is not referenced inside App.vue. We will have to pass our array to **Register** component in order to pass it to **Famous**.
+
+This implementation works, but is not efficient, because **Famous** component is **not independent**. This means that we cannot use it whenever we want, unless we pass down the data from root component(APp.vue).
+
+In a scenario where a not independent is deeply nested, you will have to pass a useless property , from component to component, just to be able to use it. In our case, if we wanted to use **Famous** component inside **Register** sidebar's widget, we would have to carry the stories array all the way long.
+
+**APP** -> **Register** -> **Sidebar** -> **WidgetX** -> **Famous**
