@@ -2,7 +2,7 @@
 <div class="container">
   <h1 class="headline">Did you know this?</h1>
   <ul class="list-group">
-    <li class="list-group-item" v-for="story in stories">
+    <li class="list-group-item" v-for="story in store.stories">
       {{ story.writer }} said "{{ story.plot }}" Story upvotes {{ story.upvotes }}
     </li>
   </ul>
@@ -10,13 +10,14 @@
 </template>
 
 <script>
+import {store} from '../store.js';
+
 export default {
-  props: ['stories']
-    // computed: {},
-    // ready () {},
-    // attached () {},
-    // methods: {},
-    // components: {}
+    data () {
+      return {
+        store
+      }
+    }
 }
 </script>
 

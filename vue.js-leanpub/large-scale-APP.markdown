@@ -91,3 +91,21 @@ This implementation works, but is not efficient, because **Famous** component is
 In a scenario where a not independent is deeply nested, you will have to pass a useless property , from component to component, just to be able to use it. In our case, if we wanted to use **Famous** component inside **Register** sidebar's widget, we would have to carry the stories array all the way long.
 
 **APP** -> **Register** -> **Sidebar** -> **WidgetX** -> **Famous**
+
+### Global Store
+
+The "props" way seemed nice at fist, but as seen in the **famous** component, as a project get bigger and components get nested into others, data management and sharing between them gets really hard to track.
+
+So let's make data of our example a bit easy to handle.
+
+We can extract the stories data to a .js file, store them to a constant and later import them at the desirable locations.
+
+We can name the file as store.js and put it inside */src* directory.
+
+**Warning**:
+
+The stories prop must be removed from all files, because we have changed the way of data storage and there can be conflicts, which can break our build.
+
+After we have stored all data in store.js we can import it within Stories.vue using ES6 modules syntax.
+
+Because we are importing the store object we have to change the component's template as well.

@@ -1,0 +1,16 @@
+)]}
+{
+ "version": 3,
+ "sources": "/home/tab/vue2-guild/app/src/single-file-compont/stories-classic-project/src/story.js",
+ "file": "/home/tab/vue2-guild/dist/app/src/single-file-compont/stories-classic-project/src/story.js",
+ "sourceRoot": "",
+ "names": [
+  "store",
+  "stories",
+  "plot",
+  "writer",
+  "upvotes",
+  "voted"
+ ],
+ "mappings": ";;;;;AAAO,IAAMA,wBAAQ;AACnBC,WAAS,CACP;AACEC,UAAM,sBADR;AAEEC,YAAQ,MAFV;AAGEC,aAAS,EAHX;AAIEC,WAAO;AAJT,GADO,EAMJ;AACDH,UAAM,oBADL;AAEDC,YAAQ,MAFP;AAGDC,aAAS,EAHR;AAIDC,WAAO;AAJN,GANI,EAWJ;AACDH,UAAM,uBADL;AAEDC,YAAQ,MAFP;AAGDC,aAAS,EAHR;AAIDC,WAAO;AAJN,GAXI,EAgBJ;AACDH,UAAM,uBADL;AAEDC,YAAQ,MAFP;AAGDC,aAAS,EAHR;AAIDC,WAAO;AAJN,GAhBI,EAqBJ;AACDH,UAAM,uBADL;AAEDC,YAAQ,MAFP;AAGDC,aAAS,EAHR;AAIDC,WAAO;AAJN,GArBI,EA0BJ;AACDH,UAAM,8BADL;AAEDC,YAAQ,aAFP;AAGDC,aAAS,EAHR;AAIDC,WAAO;AAJN,GA1BI;AADU,CAAd"
+}

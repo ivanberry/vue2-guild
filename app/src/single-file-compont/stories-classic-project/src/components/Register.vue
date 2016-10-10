@@ -23,6 +23,6 @@ export default {
   created () {
     console.log('instance created: ' + new Date());
   },
-  props: ['stories']
+  // props: ['stories']
 }
 </script>

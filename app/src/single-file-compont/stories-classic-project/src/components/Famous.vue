@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  props: ['stories'],
+  // props: ['stories'],
   computed: {
     famous () {
       return this.stories.filter(function (item) {
