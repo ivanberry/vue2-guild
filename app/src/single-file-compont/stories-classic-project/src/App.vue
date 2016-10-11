@@ -3,8 +3,8 @@
   <img class="logo" src="./assets/logo.png">
   <!-- <hello></hello> -->
   <!-- <login><login> -->
-  <!-- <register :stories="stories"></register> -->
-  <stories :stories="stories"></stories>
+  <register :stories="stories"></register>
+  <!-- <stories :stories="stories"></stories> -->
 </div>
 </template>
 

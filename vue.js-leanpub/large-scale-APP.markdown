@@ -109,3 +109,7 @@ The stories prop must be removed from all files, because we have changed the way
 After we have stored all data in store.js we can import it within Stories.vue using ES6 modules syntax.
 
 Because we are importing the store object we have to change the component's template as well.
+
+## Swapping Components
+
+Using Single File Components is the simplest way to build a Single Page Application with Vue. Using them requires to get familiar with many -if not all-feature provided.We saw in this chapter how to setup a fresh project, create `*.vue` files and manage duplication state so far. Now it's time to review a way to swap view-specific components.
