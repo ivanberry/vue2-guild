@@ -1,22 +1,34 @@
 <template>
 <div id="app">
-  <img class="logo" src="./assets/logo.png">
-  <!-- <hello></hello> -->
-  <!-- <login><login> -->
-  <register :stories="stories"></register>
-  <!-- <stories :stories="stories"></stories> -->
+  <!-- <img class="logo" src="./assets/logo.png"> -->
+  <h1>Welcome to dynamic components!</h1>
+  <ul class="nav nav-tabs">
+    <li v-for="page in pages" :class="{active: isActivePage(page)}">
+      <a href="#" @click="setPage(page)">{{ page | capitalize }}</a>
+    </li>
+  </ul>
+  <component :is="activePage"></component>
 </div>
 </template>
 
 <script>
-import Hello from './components/Hello';
+// import Hello from './components/Hello';
 import Login from './components/Login';
 import Register from './components/Register';
 import Stories from './components/Stories';
+// import Greet from './components/Greet';
 
 export default {
   data() {
     return {
+      // the page we want to render each time
+      pages: [
+        'stories',
+        'register',
+        'login'
+      ],
+      activePage: 'login',
+      currentComponent: 'greet',
       stories: [{
         plot: 'My horse is amazing!',
         writer: 'Mr.E',
@@ -51,10 +63,27 @@ export default {
     }
   },
   components: {
-    Hello,
+    // Hello,
+    // Greet,
     Login,
     Register,
     Stories
+  },
+  methods: {
+    setPage (newPage) {
+      console.log(newPage);
+      this.activePage = newPage;
+    },
+    isActivePage (page) {
+      return this.activePage === page;
+    }
+  },
+  filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
   }
 }
 </script>

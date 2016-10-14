@@ -112,4 +112,42 @@ Because we are importing the store object we have to change the component's temp
 
 ## Swapping Components
 
-Using Single File Components is the simplest way to build a Single Page Application with Vue. Using them requires to get familiar with many -if not all-feature provided.We saw in this chapter how to setup a fresh project, create `*.vue` files and manage duplication state so far. Now it's time to review a way to swap view-specific components.
+Using Single File Components is the simplest way to build a Single Page Application with Vue. Using them requires to get familiar with many -if not all-feature provided.We saw in this chapter how to setup a fresh project, create `*.vue` files and manage duplication state so far. Now it's time to review a way to swap view-specific components
+
+### component is
+
+One way to surpass this, is to use the reserved `<component>` element and use the same mount point to dynamically switch between multiple components, by using the `is` attribute.
+
+The `hello.vue` file comes with the default files and folders of the project.Now we have exact the same results we had before our changes, but there we are using the `component` element. To see how this would work dynamically, check the next example where we are changing between 2 different single components by clicking on their links.
+
+First create another component, like **Hello.vue** in the structure, but with a different message, name **Greet.vue**.
+
+We made **Greet** display a message to mainfest its presence! Let's import it in **App.vue** and give the user the ability to swap between 2 components.
+
+Well, as you can see, we are binding the special attribute *is* to *currentComponent*, so when its value changes, the displaying component will also change. To swap the view, the user just have to click on either link to change the value of our data property.
+
+This dynamic way of switching between multiple components can prove very userfull cause we can use the same mount point for all of them and eliminates the need to find another way of having many components in one places, as we did in the previous examples.
+
+### Navigation
+
+We can implement this way of swamping components to our known example of stories, where we used `*.vue` files to simulate a social network, where we have a login page, a Registration page etc. Now we can use a page or tab system where we can put those previous components and each tab will contain one of them.
+
+We are going to have **Stories.vue** in one tab, **Register.vue** in another, and **Login.vue** in a third. Don't forget that Register component has within it **Famous.vue**, which returns the most trending stories.
+
+To achieve this. we will use tabs navigation to swap between them easy. Also we need a way of changing this tabs-components in a similar way as above. Read thoroughly the next example.
+
+Because the vuejs 2.0 has been released, see the chanelogs [dynamically class](http://vuejs.org/guide/class-and-style.html)
+
+```HTML
+<!-- // 这种方法的动态类名已经弃用 -->
+<li class="{{ isActivePage ? 'active' : ''}}"></li>
+
+<!-- v-bind:class = "objectClass or Array" -->
+<!-- the presence of active depends on isActivePage() -->
+<li :class="{active: isActivePage(page)}"></li>
+```
+Let's break it down.
+We have introduced a "tab" system for each view we require. An array named *pages* contains the pages we would like to display and we are using *v-for* directive to create one tab for each of them.To change between tabs we created a method called *setPage*, which changes the *activePage* data property on click, initially set to stories, to the clicked page. To determine which tab must be active an in-line *if* is applied, which sets the class *active* whether the current *activePage* property matches the page. Clearly we are importing each component as before, using *<component :is="activePage"></component>* again binded a data property.
+All other components remain the same the previous examples, only this has changed to make tabs work.
+
+With these few and simple lines of code, we have accomplished a simple navigation system, swapping between our components.

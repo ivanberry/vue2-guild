@@ -14,6 +14,11 @@
 import Famous from './Famous.vue';
 
 export default {
+  data () {
+    return {
+      stories: ''
+    }
+  },
   components: {
     Famous,
   },
