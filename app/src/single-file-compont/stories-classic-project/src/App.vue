@@ -1,22 +1,26 @@
 <template>
 <div id="app">
   <!-- <img class="logo" src="./assets/logo.png"> -->
-  <h1>Welcome to dynamic components!</h1>
-  <ul class="nav nav-tabs">
-    <li v-for="page in pages" :class="{active: isActivePage(page)}">
-      <a href="#" @click="setPage(page)">{{ page | capitalize }}</a>
-    </li>
-  </ul>
-  <component :is="activePage"></component>
+  <h2>Welcome to dynamic components!</h2>
+  <slotd>
+    <p>Parent componen content</p>
+  </slotd>
+  <!-- <ul class="nav nav-tabs"> -->
+    <!-- <li v-for="page in pages" :class="{active: isActivePage(page)}"> -->
+      <!-- <a href="#" @click="setPage(page)">{{ page | capitalize }}</a> -->
+    <!-- </li> -->
+  <!-- </ul> -->
+  <!-- <component :is="activePage"></component> -->
 </div>
 </template>
 
 <script>
 // import Hello from './components/Hello';
-import Login from './components/Login';
-import Register from './components/Register';
-import Stories from './components/Stories';
+// import Login from './components/Login';
+// import Register from './components/Register';
+// import Stories from './components/Stories';
 // import Greet from './components/Greet';
+ import Slotd from './components/Slotd';
 
 export default {
   data() {
@@ -63,11 +67,12 @@ export default {
     }
   },
   components: {
+    Slotd
     // Hello,
     // Greet,
-    Login,
-    Register,
-    Stories
+    // Login,
+    // Register,
+    // Stories,
   },
   methods: {
     setPage (newPage) {
