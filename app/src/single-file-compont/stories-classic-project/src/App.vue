@@ -2,9 +2,7 @@
 <div id="app">
   <!-- <img class="logo" src="./assets/logo.png"> -->
   <h2>Welcome to dynamic components!</h2>
-  <slotd>
-    <p>Parent componen content</p>
-  </slotd>
+  <stories></stories>
   <!-- <ul class="nav nav-tabs"> -->
     <!-- <li v-for="page in pages" :class="{active: isActivePage(page)}"> -->
       <!-- <a href="#" @click="setPage(page)">{{ page | capitalize }}</a> -->
@@ -18,7 +16,7 @@
 // import Hello from './components/Hello';
 // import Login from './components/Login';
 // import Register from './components/Register';
-// import Stories from './components/Stories';
+import Stories from './components/Stories';
 // import Greet from './components/Greet';
  import Slotd from './components/Slotd';
 
@@ -67,12 +65,12 @@ export default {
     }
   },
   components: {
-    Slotd
+    // Slotd
     // Hello,
     // Greet,
     // Login,
     // Register,
-    // Stories,
+    Stories,
   },
   methods: {
     setPage (newPage) {
