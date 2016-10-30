@@ -2,6 +2,7 @@
 <div id="app">
   <!-- <img class="logo" src="./assets/logo.png"> -->
   <h2>Welcome to dynamic components!</h2>
+  <!-- <tran></tran> -->
   <stories></stories>
   <!-- <ul class="nav nav-tabs"> -->
     <!-- <li v-for="page in pages" :class="{active: isActivePage(page)}"> -->
@@ -18,7 +19,8 @@
 // import Register from './components/Register';
 import Stories from './components/Stories';
 // import Greet from './components/Greet';
- import Slotd from './components/Slotd';
+ // import Slotd from './components/Slotd';
+ // import Tran from './components/transitionSingleEl'
 
 export default {
   data() {
@@ -71,6 +73,7 @@ export default {
     // Login,
     // Register,
     Stories,
+    // Tran
   },
   methods: {
     setPage (newPage) {
