@@ -39,6 +39,7 @@ Another way to declare a template is to create a `script` with type set to `text
 ```HTML
 <script type="text/template" id="story-template">
     <h1>My horse is amazing!</h1>
+	<h3>This is a test for atom git plus
 </script>
 <script type="text/javascript">
   Vue.component('story', {
